@@ -14,10 +14,11 @@ namespace ProjCursoWEBDotNetCoreMVC.Data
         {
         }
 
-        public DbSet<CursoWebCoreMVC.Models.Aluno> Aluno { get; set; }
+        public DbSet<CursoWebCoreMVC.Models.Medicamento> Medicamento { get; set; }
 
-        public DbSet<CursoWebCoreMVC.Models.Disciplina> Disciplina { get; set; }
+        public DbSet<CursoWebCoreMVC.Models.MaterialConsumo> MaterialConsumo { get; set; }
 
-        public DbSet<CursoWebCoreMVC.Models.Curso> Curso { get; set; }
+        public DbSet<CursoWebCoreMVC.Models.Enfermeiro> Enfermeiro { get; set; }
+        public DbSet<CursoWebCoreMVC.Models.Hospital> Hospital { get; set; }
     }
 }
