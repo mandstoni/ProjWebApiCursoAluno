@@ -1,12 +1,12 @@
 ﻿@model CursoWebCoreMVC.Models.Medicamento
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastar Medicamento";
 }
 
-<h1>Create</h1>
+<h1>Solicitar Medicamento</h1>
 
-<h4>Disciplina</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -26,6 +26,11 @@
                 <label asp-for="UnidadeDosagem" class="control-label"></label>
                 <input asp-for="UnidadeDosagem" class="form-control" />
                 <span asp-validation-for="UnidadeDosagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enfermeiro" class="control-label"></label>
+                <input asp-for="Enfermeiro" class="form-control" />
+                <span asp-validation-for="Enfermeiro" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

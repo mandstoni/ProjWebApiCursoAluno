@@ -11,5 +11,6 @@ namespace CursoWebCoreMVC.Models
         public string Nome { get; set; }
         public string Dosagem { get; set; }
         public string UnidadeDosagem { get; set; }
+        public Enfermeiro Enfermeiro { get; set; }
     }
 }

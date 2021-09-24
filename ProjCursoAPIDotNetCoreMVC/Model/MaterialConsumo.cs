@@ -10,6 +10,8 @@ namespace CursoWebCoreMVC.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public int QtdProduto { get; set; }
+        public Enfermeiro Enfermeiro { get; set; }
+
 
     }
 }

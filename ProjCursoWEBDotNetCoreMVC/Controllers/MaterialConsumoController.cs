@@ -46,6 +46,15 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
         // GET: MaterialConsumos/Create
         public IActionResult Create()
         {
+            var mc = new MaterialConsumo();
+            var enfermeiro = _context.Enfermeiro.ToList();
+
+            mc.Enfermeiros = new List<SelectListItem>();
+
+            foreach(var enf in enfermeiro)
+            {
+                mc.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
+            }
             return View();
         }
 
@@ -56,6 +65,10 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,QtdProduto")] MaterialConsumo materialConsumo)
         {
+            int _enfermeiroId = int.Parse(Request.Form["Enfermeiro"].ToString());
+            var enfermeiro = _context.Enfermeiro.FirstOrDefault(e => e.Id == _enfermeiroId);
+            materialConsumo.Enfermeiro = enfermeiro;
+
             if (ModelState.IsValid)
             {
                 _context.Add(materialConsumo);
@@ -71,6 +84,17 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
             if (id == null)
             {
                 return NotFound();
+            }
+
+            var  mc = _context.MaterialConsumo.Include(e => e.Enfermeiro).First(mc => mc.Id == id);
+
+            var enfermeiro = _context.Enfermeiro.ToList();
+
+            mc.Enfermeiros = new List<SelectListItem>();
+
+            foreach (var enf in enfermeiro)
+            {
+                mc.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
             }
 
             var materialConsumo = await _context.MaterialConsumo.FindAsync(id);
@@ -92,6 +116,10 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
             {
                 return NotFound();
             }
+
+            int _enfermeiroId = int.Parse(Request.Form["Enfermeiro"].ToString());
+            var enfermeiro = _context.Enfermeiro.FirstOrDefault(e => e.Id == _enfermeiroId);
+            materialConsumo.Enfermeiro = enfermeiro;
 
             if (ModelState.IsValid)
             {

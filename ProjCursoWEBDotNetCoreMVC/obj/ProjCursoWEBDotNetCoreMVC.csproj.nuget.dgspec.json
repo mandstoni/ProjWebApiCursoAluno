@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Amanda Toni\\Source\\Repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj": {}
+    "C:\\Users\\Amanda Toni\\source\\repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Amanda Toni\\Source\\Repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj": {
+    "C:\\Users\\Amanda Toni\\source\\repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Amanda Toni\\Source\\Repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj",
+        "projectUniqueName": "C:\\Users\\Amanda Toni\\source\\repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj",
         "projectName": "ProjCursoWEBDotNetCoreMVC",
-        "projectPath": "C:\\Users\\Amanda Toni\\Source\\Repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj",
+        "projectPath": "C:\\Users\\Amanda Toni\\source\\repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\ProjCursoWEBDotNetCoreMVC.csproj",
         "packagesPath": "C:\\Users\\Amanda Toni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Amanda Toni\\Source\\Repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\obj\\",
+        "outputPath": "C:\\Users\\Amanda Toni\\source\\repos\\ProjWebApiCursoAluno\\ProjCursoWEBDotNetCoreMVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Amanda Toni\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,13 +42,13 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.9, )"
+              "version": "[5.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.9, )"
+              "version": "[5.0.10, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

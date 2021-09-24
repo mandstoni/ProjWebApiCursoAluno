@@ -46,6 +46,15 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
         // GET: Medicamento/Create
         public IActionResult Create()
         {
+            var med = new Medicamento();
+            var enfermeiro = _context.Enfermeiro.ToList();
+
+            med.Enfermeiros = new List<SelectListItem>();
+
+            foreach (var enf in enfermeiro)
+            {
+                med.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
+            }
             return View();
         }
 
@@ -56,6 +65,10 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Dosagem,UnidadeDosagem")] Medicamento medicamento)
         {
+            int _enfermeiroId = int.Parse(Request.Form["Enfermeiro"].ToString());
+            var enfermeiro = _context.Enfermeiro.FirstOrDefault(e => e.Id == _enfermeiroId);
+            medicamento.Enfermeiro = enfermeiro;
+
             if (ModelState.IsValid)
             {
                 _context.Add(medicamento);
@@ -71,6 +84,17 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
             if (id == null)
             {
                 return NotFound();
+            }
+
+            var med = _context.Medicamento.Include(e => e.Enfermeiro).First(med => med.Id == id);
+
+            var enfermeiro = _context.Enfermeiro.ToList();
+
+            med.Enfermeiros = new List<SelectListItem>();
+
+            foreach (var enf in enfermeiro)
+            {
+                med.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
             }
 
             var medicamento = await _context.Medicamento.FindAsync(id);
@@ -92,6 +116,10 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
             {
                 return NotFound();
             }
+
+            int _enfermeiroId = int.Parse(Request.Form["Enfermeiro"].ToString());
+            var enfermeiro = _context.Enfermeiro.FirstOrDefault(e => e.Id == _enfermeiroId);
+            medicamento.Enfermeiro = enfermeiro;
 
             if (ModelState.IsValid)
             {

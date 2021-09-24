@@ -4,9 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Solicitar material de consumo</h1>
 
-<h4>Disciplina</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,7 +21,11 @@
                 <input asp-for="QtdProduto" class="form-control" />
                 <span asp-validation-for="QtdProduto" class="text-danger"></span>
             </div>
-           
+            <div class="form-group">
+                <label asp-for="Enfermeiro" class="control-label"></label>
+                <input asp-for="Enfermeiro" class="form-control" />
+                <span asp-validation-for="Enfermeiro" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
