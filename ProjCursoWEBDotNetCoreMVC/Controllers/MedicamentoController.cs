@@ -22,7 +22,7 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
         // GET: Medicamento
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Medicamento.ToListAsync());
+            return View(await _context.Medicamento.Include(e => e.Enfermeiro).ToListAsync());
         }
 
         // GET: Medicamento/Details/5
@@ -55,7 +55,7 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
             {
                 med.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
             }
-            return View();
+            return View(med);
         }
 
         // POST: Medicamento/Create
@@ -86,18 +86,18 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
                 return NotFound();
             }
 
-            var med = _context.Medicamento.Include(e => e.Enfermeiro).First(med => med.Id == id);
+            var medicamento = _context.Medicamento.Include(e => e.Enfermeiro).First(med => med.Id == id);
 
             var enfermeiro = _context.Enfermeiro.ToList();
 
-            med.Enfermeiros = new List<SelectListItem>();
+            medicamento.Enfermeiros = new List<SelectListItem>();
 
             foreach (var enf in enfermeiro)
             {
-                med.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
+                medicamento.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
             }
 
-            var medicamento = await _context.Medicamento.FindAsync(id);
+          
             if (medicamento == null)
             {
                 return NotFound();

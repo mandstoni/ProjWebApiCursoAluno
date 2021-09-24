@@ -22,7 +22,7 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
         // GET: MaterialConsumos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MaterialConsumo.ToListAsync());
+            return View(await _context.MaterialConsumo.Include(e => e.Enfermeiro).ToListAsync());
         }
 
         // GET: MaterialConsumos/Details/5
@@ -33,7 +33,7 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
                 return NotFound();
             }
 
-            var materialConsumo = await _context.MaterialConsumo
+            var materialConsumo = await _context.MaterialConsumo.Include(e => e.Enfermeiro)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (materialConsumo == null)
             {
@@ -55,7 +55,7 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
             {
                 mc.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
             }
-            return View();
+            return View(mc);
         }
 
         // POST: MaterialConsumos/Create
@@ -86,18 +86,17 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
                 return NotFound();
             }
 
-            var  mc = _context.MaterialConsumo.Include(e => e.Enfermeiro).First(mc => mc.Id == id);
+            var materialConsumo = _context.MaterialConsumo.Include(e => e.Enfermeiro).First(mc => mc.Id == id);
 
             var enfermeiro = _context.Enfermeiro.ToList();
 
-            mc.Enfermeiros = new List<SelectListItem>();
+            materialConsumo.Enfermeiros = new List<SelectListItem>();
 
             foreach (var enf in enfermeiro)
             {
-                mc.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
+                materialConsumo.Enfermeiros.Add(new SelectListItem { Text = enf.Nome, Value = enf.Id.ToString() });
             }
 
-            var materialConsumo = await _context.MaterialConsumo.FindAsync(id);
             if (materialConsumo == null)
             {
                 return NotFound();
@@ -152,7 +151,7 @@ namespace ProjCursoWEBDotNetCoreMVC.Controllers
                 return NotFound();
             }
 
-            var materialConsumo = await _context.MaterialConsumo
+            var materialConsumo = await _context.MaterialConsumo.Include(e => e.Enfermeiro)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (materialConsumo == null)
             {

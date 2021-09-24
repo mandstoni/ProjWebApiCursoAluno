@@ -29,7 +29,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Enfermeiro" class="control-label"></label>
-                <input asp-for="Enfermeiro" class="form-control" />
+                <select asp-for="Enfermeiro" id="Enfermeiro" name="Enfermeiro" asp-items="@Model.Enfermeiros" class="form-control">
+                    <option>Please select one</option>
+                </select>
                 <span asp-validation-for="Enfermeiro" class="text-danger"></span>
             </div>
             <div class="form-group">

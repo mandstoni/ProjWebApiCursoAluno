@@ -21,7 +21,7 @@
                 @Html.DisplayNameFor(model => model.UnidadeDosagem)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Enfermeiro)
+                @Html.DisplayNameFor(model => model.Enfermeiro.Nome)
             </th>
             <th></th>
         </tr>
@@ -29,18 +29,18 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Dosagem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnidadeDosagem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Enfermeiro)
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dosagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnidadeDosagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enfermeiro.Nome)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

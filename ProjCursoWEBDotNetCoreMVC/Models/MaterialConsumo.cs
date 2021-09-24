@@ -12,7 +12,7 @@ namespace CursoWebCoreMVC.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public int QtdProduto { get; set; }
-        public  virtual Enfermeiro Enfermeiro { get; set; }
+        public virtual Enfermeiro Enfermeiro { get; set; }  
         [NotMapped]
         public virtual List<SelectListItem> Enfermeiros { get; set; }
     }
